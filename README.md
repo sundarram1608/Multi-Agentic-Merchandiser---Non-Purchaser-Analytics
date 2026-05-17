@@ -285,7 +285,7 @@ The `docs/` folder is the canonical source of truth for design decisions:
 | `ANTHROPIC_API_KEY` | Yes | — | Authenticates Claude calls (Sonnet 4.6 + Haiku 4.5). |
 | `MYSQL_HOST` | No | `127.0.0.1` | MySQL hostname. |
 | `MYSQL_PORT` | No | `3306` | MySQL port. |
-| `MYSQL_USER` | No | `ram` | MySQL username. |
+| `MYSQL_USER` | No | `your_user_name` | MySQL username. |
 | `MYSQL_PASSWORD` | No | empty | MySQL password. |
 | `MYSQL_DB` | No | `merchandising` | Database name; holds both `non_purchasers_feedback` and `chat_trace`. |
 
