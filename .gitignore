@@ -238,3 +238,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Documents
+*.ppt
+*.pptx
+*.doc
+*.docx
