@@ -138,7 +138,7 @@ You will need:
 Fork the repository on GitHub (so you can keep your own changes and contribute back), then clone your fork locally:
 
 ```bash
-git clone https://github.com/<your-username>/non_purchaser_feedback.git
+git clone https://github.com/sundarram1608/Multi-Agentic_Merchandiser-NonPurchaser_Analytics.git
 cd non_purchaser_feedback
 ```
 
