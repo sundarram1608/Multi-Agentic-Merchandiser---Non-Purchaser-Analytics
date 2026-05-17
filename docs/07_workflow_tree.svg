@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1880" font-family="-apple-system, Segoe UI, Roboto, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fafbfc"/>
+      <stop offset="1" stop-color="#eef1f4"/>
+    </linearGradient>
+    <filter id="ss" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="endL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c"/>
+    </marker>
+  </defs>
+  <rect width="1500" height="1880" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="750" y="46" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">
+    Workflow Tree — Typical Chat Turn
+  </text>
+  <text x="750" y="70" text-anchor="middle" font-size="13" fill="#64748b">
+    Top-down: User question travels through Planner, then branches by path. SQL path is the deep one.
+  </text>
+
+  <!-- ============================================================
+       Vertical guide line for SQL path stays at X=750 to avoid crossings.
+       Branches (direct/clarify) go to the sides.
+       ============================================================ -->
+
+  <!-- 0: User question (root) -->
+  <g transform="translate(620, 100)" filter="url(#ss)">
+    <rect width="260" height="60" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+    <text x="130" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">User question</text>
+  </g>
+  <line x1="750" y1="160" x2="750" y2="195" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- 1: Planner (decision node) -->
+  <g transform="translate(615, 200)" filter="url(#ss)">
+    <rect width="270" height="80" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="135" y="32" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">1. Planner</text>
+    <text x="135" y="52" text-anchor="middle" font-size="11" fill="#64748b">classifies path:</text>
+    <text x="135" y="68" text-anchor="middle" font-size="11" fill="#64748b">sql · direct · clarify</text>
+  </g>
+
+  <!-- Branch dispatcher (visual fork) -->
+  <line x1="750" y1="280" x2="750" y2="320" stroke="#475569" stroke-width="2"/>
+  <!-- horizontal branch bar -->
+  <line x1="220" y1="320" x2="1280" y2="320" stroke="#475569" stroke-width="2"/>
+  <!-- branch arrows down -->
+  <line x1="220" y1="320" x2="220" y2="360" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <line x1="750" y1="320" x2="750" y2="360" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <line x1="1280" y1="320" x2="1280" y2="360" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- branch labels -->
+  <text x="220" y="312" text-anchor="middle" font-size="11" font-weight="700" fill="#374151">clarify</text>
+  <text x="750" y="312" text-anchor="middle" font-size="11" font-weight="700" fill="#374151">sql  (most common)</text>
+  <text x="1280" y="312" text-anchor="middle" font-size="11" font-weight="700" fill="#374151">direct</text>
+
+  <!-- ===================== CLARIFY branch (leftmost) ===================== -->
+  <g transform="translate(100, 370)">
+    <rect width="240" height="64" rx="12" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="120" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#0c4a6e">Return clarifying</text>
+    <text x="120" y="48" text-anchor="middle" font-size="11" fill="#0369a1">question to user · END</text>
+  </g>
+
+  <!-- ===================== DIRECT branch (rightmost) ===================== -->
+  <g transform="translate(1160, 370)" filter="url(#ss)">
+    <rect width="240" height="64" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">5. Writer (direct)</text>
+    <text x="120" y="48" text-anchor="middle" font-size="10" fill="#64748b">conversational answer · END</text>
+  </g>
+
+  <!-- ===================== SQL branch (deep tree, center column) ===================== -->
+
+  <!-- 2. Coder -->
+  <g transform="translate(620, 370)" filter="url(#ss)">
+    <rect width="260" height="68" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="130" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">2. Coder</text>
+    <text x="130" y="50" text-anchor="middle" font-size="11" fill="#64748b">writes SQL in &lt;sql_query&gt;</text>
+  </g>
+  <line x1="750" y1="438" x2="750" y2="465" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- sql_parser (tool) -->
+  <g transform="translate(640, 475)">
+    <rect width="220" height="48" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">sql_parser</text>
+    <text x="110" y="38" text-anchor="middle" font-size="10" fill="#166534">extract from XML tags</text>
+  </g>
+  <line x1="750" y1="525" x2="750" y2="552" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- sql_safety_guard (tool) -->
+  <g transform="translate(640, 560)">
+    <rect width="220" height="48" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">sql_safety_guard</text>
+    <text x="110" y="38" text-anchor="middle" font-size="10" fill="#166534">SELECT-only check</text>
+  </g>
+  <line x1="750" y1="610" x2="750" y2="638" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- 3. Code Reviewer -->
+  <g transform="translate(620, 645)" filter="url(#ss)">
+    <rect width="260" height="68" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="130" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">3. Code Reviewer</text>
+    <text x="130" y="50" text-anchor="middle" font-size="11" fill="#64748b">technical correctness</text>
+  </g>
+
+  <!-- Code Reviewer retry loop back to Coder -->
+  <path d="M 880 680 L 1000 680 L 1000 405 L 880 405" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="1015" y="545" font-size="11" font-weight="700" fill="#ea580c">retry · max 5</text>
+
+  <line x1="750" y1="713" x2="750" y2="740" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- sql_executor (tool) -->
+  <g transform="translate(640, 748)">
+    <rect width="220" height="48" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">sql_executor</text>
+    <text x="110" y="38" text-anchor="middle" font-size="10" fill="#166534">runs query (MySQL)</text>
+  </g>
+  <!-- error loop back to Code Reviewer -->
+  <path d="M 640 772 L 540 772 L 540 680 L 620 680" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="430" y="725" font-size="11" font-weight="700" fill="#ea580c">on error</text>
+
+  <line x1="750" y1="796" x2="750" y2="822" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- 4. Output Reviewer -->
+  <g transform="translate(620, 830)" filter="url(#ss)">
+    <rect width="260" height="74" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="130" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">4. Output Reviewer</text>
+    <text x="130" y="46" text-anchor="middle" font-size="10" fill="#64748b">semantic correctness</text>
+    <text x="130" y="60" text-anchor="middle" font-size="10" fill="#64748b">+ does viz apply?</text>
+  </g>
+
+  <!-- Output Reviewer retry loop back to Coder -->
+  <path d="M 620 870 L 480 870 L 480 405 L 620 405" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="390" y="640" font-size="11" font-weight="700" fill="#ea580c" transform="rotate(-90 390 640)">retry · max 2</text>
+
+  <!-- Fan-out: Output Reviewer approves -->
+  <line x1="750" y1="904" x2="750" y2="945" stroke="#475569" stroke-width="2"/>
+  <line x1="495" y1="945" x2="1005" y2="945" stroke="#475569" stroke-width="2"/>
+  <line x1="495" y1="945" x2="495" y2="985" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <line x1="1005" y1="945" x2="1005" y2="985" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <text x="495" y="938" text-anchor="middle" font-size="11" font-weight="700" fill="#374151">always</text>
+  <text x="1005" y="938" text-anchor="middle" font-size="11" font-weight="700" fill="#374151">if viz applies</text>
+
+  <!-- ===== Writer (left branch) — now inside hard-block groundedness loop ===== -->
+  <g transform="translate(370, 995)" filter="url(#ss)">
+    <rect width="250" height="68" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="125" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">5. Writer (sql)</text>
+    <text x="125" y="50" text-anchor="middle" font-size="11" fill="#64748b">grounded text answer</text>
+  </g>
+
+  <!-- safe_derivations_summary — side-input injected into Writer's prompt
+       Pre-computed by the Orchestrator from the SQL result rows; lists the
+       legitimate numeric values the Writer is allowed to cite (cell values,
+       grand totals, per-group subtotals, top-N partial sums, etc.).
+       Drawn as a side-input feeding the Writer from the left. -->
+  <g transform="translate(50, 1010)">
+    <rect width="280" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="140" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">safe_derivations_summary</text>
+    <text x="140" y="32" text-anchor="middle" font-size="9" fill="#166534">pre-compute Writer's safe values list</text>
+  </g>
+  <line x1="330" y1="1029" x2="370" y2="1029" stroke="#16a34a" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- groundedness_check tool (under Writer) -->
+  <line x1="495" y1="1063" x2="495" y2="1088" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <g transform="translate(385, 1095)">
+    <rect width="220" height="48" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">groundedness_check</text>
+    <text x="110" y="36" text-anchor="middle" font-size="9" fill="#166534">verify every number in text</text>
+  </g>
+
+  <!-- Hard-block retry loop: groundedness_check ↔ Writer (max 2 attempts) -->
+  <path d="M 385 1119 L 290 1119 L 290 1025 L 370 1025" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="250" y="1075" font-size="11" font-weight="700" fill="#ea580c" transform="rotate(-90 250 1075)">retry · max 2</text>
+  <text x="155" y="1130" font-size="9" font-weight="700" fill="#7c2d12">HARD BLOCK</text>
+  <text x="155" y="1142" font-size="9" fill="#7c2d12">on exhaustion: ship</text>
+  <text x="155" y="1153" font-size="9" fill="#7c2d12">GROUNDEDNESS_FAIL_TEXT</text>
+
+  <!-- ===== Visualization sub-tree (right branch) ===== -->
+
+  <!-- 6. Viz Coder -->
+  <g transform="translate(880, 995)" filter="url(#ss)">
+    <rect width="250" height="68" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="125" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">6. Visualization Coder</text>
+    <text x="125" y="50" text-anchor="middle" font-size="11" fill="#64748b">writes matplotlib code</text>
+  </g>
+  <line x1="1005" y1="1063" x2="1005" y2="1088" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- viz_code_parser -->
+  <g transform="translate(895, 1095)">
+    <rect width="220" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">viz_code_parser</text>
+  </g>
+  <line x1="1005" y1="1135" x2="1005" y2="1158" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- 7. Viz Code Reviewer -->
+  <g transform="translate(880, 1165)" filter="url(#ss)">
+    <rect width="250" height="60" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="125" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">7. Viz Code Reviewer</text>
+    <text x="125" y="46" text-anchor="middle" font-size="10" fill="#64748b">static review</text>
+  </g>
+  <!-- Loop: Viz Code Reviewer ↔ Viz Coder -->
+  <path d="M 1130 1195 L 1230 1195 L 1230 1025 L 1130 1025" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="1242" y="1115" font-size="11" font-weight="700" fill="#ea580c" transform="rotate(-90 1242 1115)">retry · max 2</text>
+
+  <line x1="1005" y1="1225" x2="1005" y2="1248" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- viz_generator -->
+  <g transform="translate(895, 1255)">
+    <rect width="220" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">viz_generator → PNG</text>
+  </g>
+  <line x1="1005" y1="1295" x2="1005" y2="1310" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- png_to_base64 -->
+  <g transform="translate(895, 1315)">
+    <rect width="220" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">png_to_base64</text>
+  </g>
+  <line x1="1005" y1="1355" x2="1005" y2="1378" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- 8. Viz Reviewer -->
+  <g transform="translate(880, 1385)" filter="url(#ss)">
+    <rect width="250" height="68" rx="12" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+    <text x="125" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">8. Viz Reviewer</text>
+    <text x="125" y="46" text-anchor="middle" font-size="10" font-weight="600" fill="#0e7490">MULTIMODAL</text>
+    <text x="125" y="60" text-anchor="middle" font-size="10" fill="#64748b">layout · legibility · fit</text>
+  </g>
+  <!-- Viz Reviewer revise loop -->
+  <path d="M 1130 1419 L 1280 1419 L 1280 1025 L 1130 1025" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5 3" fill="none" marker-end="url(#endL)"/>
+  <text x="1295" y="1220" font-size="11" font-weight="700" fill="#ea580c" transform="rotate(-90 1295 1220)">revise · max 1</text>
+
+  <!-- ===== Final merge: text + (optional) chart → to_excel → Chat → trace_logger =====
+       Merge bar moved BELOW the Viz Reviewer box (y=1485) so it no longer
+       passes through the box at y=1390. Downstream elements (to_excel,
+       Chat Interface, trace_logger) shifted ~95px down accordingly. -->
+  <!-- Text leg drops from groundedness_check (left). Chart leg drops from Viz Reviewer (right). -->
+  <line x1="495" y1="1143" x2="495" y2="1485" stroke="#475569" stroke-width="2"/>
+  <line x1="1005" y1="1453" x2="1005" y2="1485" stroke="#475569" stroke-width="2"/>
+
+  <!-- merge bar at y=1485 (clears the Viz Reviewer box that ends at y=1453) -->
+  <line x1="495" y1="1485" x2="1005" y2="1485" stroke="#475569" stroke-width="2"/>
+  <line x1="750" y1="1485" x2="750" y2="1505" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- to_excel tool (whenever row_count > 0) -->
+  <g transform="translate(640, 1512)">
+    <rect width="220" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="110" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">to_excel</text>
+    <text x="110" y="32" text-anchor="middle" font-size="9" fill="#166534">rows → .xlsx download bytes</text>
+  </g>
+  <line x1="750" y1="1552" x2="750" y2="1575" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- Final destination — Chat Interface -->
+  <g transform="translate(540, 1582)">
+    <rect width="420" height="44" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="210" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">Chat Interface</text>
+    <text x="210" y="36" text-anchor="middle" font-size="10" fill="#713f12">text + optional chart + Excel + Show SQL + Agent trace</text>
+  </g>
+  <line x1="750" y1="1626" x2="750" y2="1649" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+
+  <!-- Persistence — runs after the response is delivered -->
+  <g transform="translate(595, 1656)">
+    <rect width="310" height="40" rx="10" fill="#d1fadf" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="155" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#14532d">trace_logger.log_turn</text>
+    <text x="155" y="32" text-anchor="middle" font-size="9" fill="#166534">INSERT into chat_trace MySQL · fail-safe</text>
+  </g>
+
+  <!-- chat_trace MySQL destination — the explicit persistence target. -->
+  <line x1="750" y1="1696" x2="750" y2="1720" stroke="#475569" stroke-width="2" marker-end="url(#end)"/>
+  <g transform="translate(610, 1725)">
+    <rect width="280" height="50" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.6"/>
+    <text x="140" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">chat_trace</text>
+    <text x="140" y="38" text-anchor="middle" font-size="10" fill="#713f12">MySQL audit table · one row per turn</text>
+  </g>
+
+  <!-- Out-of-band evals footnote — these don't run per-turn.
+       Pointed at by a dashed callout so the reader knows
+       the workflow tree shows the SQL chat turn only. -->
+  <g transform="translate(80, 1800)">
+    <rect width="1340" height="60" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="1.5" stroke-dasharray="6 3"/>
+    <text x="20" y="22" font-size="11" font-weight="700" fill="#581c87">Note · Out-of-band evals NOT shown here</text>
+    <text x="20" y="40" font-size="10" fill="#86198f">This tree shows ONE chat turn's control flow. Out-of-band evals run on a separate cadence and are not per-turn:</text>
+    <text x="20" y="54" font-size="10" fill="#86198f">02_enrich_topics.py (offline Topic Classifier) · 03_eval_topic_classifier · test_planner · test_orchestrator · test_golden_sql · verify_evals · eval_prompts.md  →  see tests/README.md</text>
+  </g>
+
+  <!-- ===== Legend ===== -->
+  <g transform="translate(40, 100)">
+    <rect width="200" height="160" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="14" y="22" font-size="12" font-weight="700" fill="#0f172a">Legend</text>
+
+    <rect x="14" y="34" width="22" height="14" rx="4" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+    <text x="44" y="46" font-size="11" fill="#1f2937">LLM agent</text>
+
+    <rect x="14" y="56" width="22" height="14" rx="4" fill="#d1fadf" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="44" y="68" font-size="11" fill="#1f2937">Tool (deterministic)</text>
+
+    <rect x="14" y="78" width="22" height="14" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="44" y="90" font-size="11" fill="#1f2937">Early-exit / END</text>
+
+    <line x1="14" y1="108" x2="40" y2="108" stroke="#475569" stroke-width="2"/>
+    <text x="46" y="112" font-size="11" fill="#374151">forward</text>
+
+    <line x1="14" y1="128" x2="40" y2="128" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="46" y="132" font-size="11" fill="#ea580c">retry / revise</text>
+
+    <text x="14" y="152" font-size="9" font-style="italic" fill="#64748b">Numbers = agent IDs</text>
+  </g>
+
+</svg>
